@@ -1,0 +1,42 @@
+<div class="panel panel-primary">
+  <div class="panel-heading clearfix" style="overflow: hidden">
+    <font size="5"><%= @question.title %></font>
+    <!-- <#% if user_signed_in? && current_user == @question.user %> -->
+    <% if can? :manage, @question %>
+    <div class="btn-group btn-group-sm pull-right" style="position: relative;">
+      <button type="button" class="btn btn-default"><span><%= link_to "Edit", edit_question_path(@question.id) %></span></button>
+      <button type="button" class="btn btn-default"><span><%= link_to "Delete", question_path(@question.id), method: :delete, data: {confirm: "Are you sure you want to delete?"} %></span></button>
+    </div>
+    <% end %>
+  </div>
+  <div class="panel-body"><%= @question.body %></div>
+</div>
+
+<h2>Create an Answer</h2>
+<%#= form_for @answer, url: question_answers_path(@question) do |f| %>
+
+<%# form_for [@question, @answer] this will generate a form for @answer. For example if you have a field 'body'
+the 'name' attribute will actually be: answer[body]
+
+  the @question part is only used to generate the action url for the form.
+
+  If @answer is not persisted the url will be: question_answers_path(@question)
+
+  If @answer is persisted the url weill be: question_answer_path(@question, @answer)
+  %>
+ <%= @answer.errors.full_messages.join(", ") %>
+<%= form_for [@question, @answer] do |f| %>
+  <div>
+    <!-- <%#= f.label :body %> -->
+    <%= f.text_area :body %>
+  </div>
+  <%= f.submit "Submit" %>
+<% end %>
+
+<h2>Answers</h2>
+
+<% @question.answers.each do |ans| %>
+  <%= ans.body %>
+<%= link_to "Delete", question_answer_path(@question, ans), method: :delete, data: {confirm: "Are you sure?"} %>
+  <hr />
+<% end %>

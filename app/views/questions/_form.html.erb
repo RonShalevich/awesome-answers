@@ -1,0 +1,19 @@
+
+<%# partial form being created %>
+<%= form_for @question do |f| %>
+<%= @question.errors.full_messages.join(", ") %>
+
+<div>
+  <%# Here we are saying do |f| and then sending, after submit, to @question, Question.new({title: "text", body: "body here"}) %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+</div>
+<div>
+  <%= f.label :body %>
+  <%= f.text_area :body %>
+</div>
+<%= f.submit %>
+
+
+
+<% end %>

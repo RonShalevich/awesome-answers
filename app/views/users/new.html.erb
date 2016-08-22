@@ -1,0 +1,30 @@
+<h1>Sign Up</h1>
+<%= @user.errors.full_messages.join(", ") %>
+<%= form_for @user do |f| %>
+<%#= @question.errors.full_messages.join(", ") %>
+
+  <div>
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>
+  </div>
+  <div>
+    <%= f.label :last_name %>
+    <%= f.text_area :last_name %>
+  </div>
+  <div>
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+  </div>
+  <div>
+    <%= f.label :password %>
+    <%= f.text_area :password %>
+  </div>
+  <div>
+    <%= f.label :password_confirmation %>
+    <%= f.text_area :password_confirmation %>
+  </div>
+  <%= f.submit "Sign Up!" %>
+
+
+
+  <% end %>

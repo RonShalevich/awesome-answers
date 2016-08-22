@@ -1,0 +1,12 @@
+<h1> All Questions </h1>
+<ul class ="list-group">
+  <% @questions.each do |q| %>
+
+  <%# question_path(q) automatically takes the id from the question  %>
+  <li class="list-group-item list-group-item">
+    <%= link_to q.title, question_path(q.id) %>
+  </li>
+  <% end %>
+</ul>
+
+<%= paginate @questions %>

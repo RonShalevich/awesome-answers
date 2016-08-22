@@ -33,6 +33,7 @@ gem 'bcrypt', '~> 3.1.7'
 # helper for changing / updating abilities
 gem 'cancancan'
 
+gem 'kaminari'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
@@ -49,7 +50,6 @@ group :development do
   gem 'awesome_print'
   gem 'interactive_editor'
   gem 'hirb'
-  gem 'kaminari'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
